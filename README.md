@@ -1,2 +1,2 @@
 # playwright
-First steps with Playwright.
+Curso de Platzi, playwright!
