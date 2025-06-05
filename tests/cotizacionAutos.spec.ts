@@ -56,3 +56,24 @@ test('Cotización Autos: ', async ({ page }) => {
     
     await page.getByRole('button', { name: 'Continuar' }).click();
 });
+
+
+test('Datos Asegurado Autos:', async ({ page }) => {
+    test.setTimeout(60000);
+    await page.getByRole('textbox', { name: 'NOMBRE' }).click();
+    await page.getByRole('textbox', { name: 'NOMBRE' }).fill('Alda Jocelyn');
+    await page.getByRole('textbox', { name: 'APELLIDO PATERNO' }).click();
+    await page.getByRole('textbox', { name: 'APELLIDO PATERNO' }).fill('Rojo');
+    await page.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).click();
+    await page.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).fill('Yo');
+    await page.getByRole('textbox', { name: 'CURP' }).click();
+    await page.getByRole('textbox', { name: 'CURP' }).fill('ROMA821011MDFJGL01');
+    await page.getByRole('textbox', { name: 'RFC' }).click();
+    await page.getByRole('textbox', { name: 'RFC' }).fill('ROMA821011M05');
+    await page.getByRole('textbox', { name: 'TELEFONO' }).click();
+    await page.getByRole('textbox', { name: 'TELEFONO' }).fill('5570766835');
+    await page.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).click();
+    await page.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).fill('lightit.desarrollo2@gmail.com');
+
+
+});
