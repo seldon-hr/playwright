@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('Cotización Autos: ', async ({ page }) => {
     /* Aumentar el tiempo */
-    test.setTimeout(60000); //Valor default 30000
+    test.setTimeout(90000); //Valor default 30000
 
     await page.goto('http://localhost:5173/opl/login?subRamo=autos&instancia=EPEPSICO');
     
@@ -59,7 +59,11 @@ test('Cotización Autos: ', async ({ page }) => {
 
 
 test('Datos Asegurado Autos:', async ({ page }) => {
-    test.setTimeout(60000);
+    test.setTimeout(80000);
+    /* Subir un poco */
+    await page.keyboard.press('PageUp');
+    await page.keyboard.press('PageUp');
+
     await page.getByRole('textbox', { name: 'NOMBRE' }).click();
     await page.getByRole('textbox', { name: 'NOMBRE' }).fill('Alda Jocelyn');
     await page.getByRole('textbox', { name: 'APELLIDO PATERNO' }).click();
@@ -74,6 +78,4 @@ test('Datos Asegurado Autos:', async ({ page }) => {
     await page.getByRole('textbox', { name: 'TELEFONO' }).fill('5570766835');
     await page.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).click();
     await page.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).fill('lightit.desarrollo2@gmail.com');
-
-
 });
