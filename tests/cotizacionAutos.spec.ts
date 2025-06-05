@@ -1,9 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-test('Cotización Autos: ', async ({ page }) => {
-    /* Aumentar el tiempo */
-    test.setTimeout(90000); //Valor default 30000
 
+test('Iniciar Sesión:', async ({ page }) => {
+    test.setTimeout(35000);
     await page.goto('http://localhost:5173/opl/login?subRamo=autos&instancia=EPEPSICO');
     
     /* Inicio de Sesión */
@@ -14,6 +13,16 @@ test('Cotización Autos: ', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Ingrese el texto de la imagen' }).click();
     await page.getByRole('textbox', { name: 'Ingrese el texto de la imagen' }).fill('55555');
     await page.getByRole('button', { name: 'Acceder' }).click();
+});
+
+
+
+
+test('Cotización Autos: ', async ({ page }) => {
+    /* Aumentar el tiempo */
+    test.setTimeout(90000); //Valor default 30000
+
+    
     /* Cotización */
     await page.getByRole('textbox', { name: 'GPID' }).click();
     await page.getByRole('textbox', { name: 'GPID' }).fill('ROMA821011MDFJGL01');
@@ -58,24 +67,25 @@ test('Cotización Autos: ', async ({ page }) => {
 });
 
 
-test('Datos Asegurado Autos:', async ({ page }) => {
-    test.setTimeout(80000);
-    /* Subir un poco */
-    await page.keyboard.press('PageUp');
-    await page.keyboard.press('PageUp');
+// test('Datos Asegurado Autos:', async ({ page }) => {
+//     test.setTimeout(80000);
+//     /* Subir un poco */
+//     await page.mouse.wheel(0, -500);
+//     /* await page.keyboard.press('PageUp');
+//     await page.keyboard.press('PageUp'); */
 
-    await page.getByRole('textbox', { name: 'NOMBRE' }).click();
-    await page.getByRole('textbox', { name: 'NOMBRE' }).fill('Alda Jocelyn');
-    await page.getByRole('textbox', { name: 'APELLIDO PATERNO' }).click();
-    await page.getByRole('textbox', { name: 'APELLIDO PATERNO' }).fill('Rojo');
-    await page.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).click();
-    await page.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).fill('Yo');
-    await page.getByRole('textbox', { name: 'CURP' }).click();
-    await page.getByRole('textbox', { name: 'CURP' }).fill('ROMA821011MDFJGL01');
-    await page.getByRole('textbox', { name: 'RFC' }).click();
-    await page.getByRole('textbox', { name: 'RFC' }).fill('ROMA821011M05');
-    await page.getByRole('textbox', { name: 'TELEFONO' }).click();
-    await page.getByRole('textbox', { name: 'TELEFONO' }).fill('5570766835');
-    await page.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).click();
-    await page.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).fill('lightit.desarrollo2@gmail.com');
-});
+//     await page.getByRole('textbox', { name: 'NOMBRE' }).click();
+//     await page.getByRole('textbox', { name: 'NOMBRE' }).fill('Alda Jocelyn');
+//     await page.getByRole('textbox', { name: 'APELLIDO PATERNO' }).click();
+//     await page.getByRole('textbox', { name: 'APELLIDO PATERNO' }).fill('Rojo');
+//     await page.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).click();
+//     await page.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).fill('Yo');
+//     await page.getByRole('textbox', { name: 'CURP' }).click();
+//     await page.getByRole('textbox', { name: 'CURP' }).fill('ROMA821011MDFJGL01');
+//     await page.getByRole('textbox', { name: 'RFC' }).click();
+//     await page.getByRole('textbox', { name: 'RFC' }).fill('ROMA821011M05');
+//     await page.getByRole('textbox', { name: 'TELEFONO' }).click();
+//     await page.getByRole('textbox', { name: 'TELEFONO' }).fill('5570766835');
+//     await page.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).click();
+//     await page.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).fill('lightit.desarrollo2@gmail.com');
+// });
