@@ -30,7 +30,7 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
     /* Active or desactive for slowMode, when run test with --headed */
     launchOptions: {
-      slowMo: 1000,
+      slowMo: 500,
     },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',

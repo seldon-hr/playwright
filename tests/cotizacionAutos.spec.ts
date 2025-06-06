@@ -57,8 +57,10 @@ test.describe.serial('Flujo completo de cotización de autos', () => {
     await sharedPage.getByText('AVEO - LT PLUS F 4P L4 1.5L').click();
         
     // Formas de Pago    
-    await sharedPage.getByRole('combobox').filter({ hasText: 'FORMA DE PAGO' }).locator('i').nth(1).click();
-    await sharedPage.getByText('Pago Referenciado OPL').click();
+    /* await sharedPage.getByRole('combobox').filter({ hasText: 'FORMA DE PAGO' }).locator('i').nth(1).click();
+    await sharedPage.getByText('Pago Referenciado').click(); */
+    await sharedPage.getByRole('textbox', { name: 'FORMA DE PAGO' }).click();
+    await sharedPage.getByText('Pago Referenciado', { exact: true }).click();
     await sharedPage.getByRole('textbox', { name: 'PAQUETE DESEADO' }).click();
     await sharedPage.getByText('amplia DM 5').click();
     await sharedPage.getByRole('button', { name: 'Cotizar' }).click();
@@ -70,26 +72,26 @@ test.describe.serial('Flujo completo de cotización de autos', () => {
     await sharedPage.getByRole('button', { name: 'Continuar' }).click();
   });
 
-//   test('Datos Asegurado Autos', async () => {
-//     test.setTimeout(80000);
-//     /* Subir un poco */
-//     await sharedPage.mouse.wheel(0, -500);
+  test('Datos Asegurado Autos', async () => {
+    test.setTimeout(80000);
+    /* Subir un poco */
+    await sharedPage.mouse.wheel(0, -800);
 
-//     await sharedPage.getByRole('textbox', { name: 'NOMBRE' }).click();
-//     await sharedPage.getByRole('textbox', { name: 'NOMBRE' }).fill('Alda Jocelyn');
-//     await sharedPage.getByRole('textbox', { name: 'APELLIDO PATERNO' }).click();
-//     await sharedPage.getByRole('textbox', { name: 'APELLIDO PATERNO' }).fill('Rojo');
-//     await sharedPage.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).click();
-//     await sharedPage.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).fill('Yo');
-//     await sharedPage.getByRole('textbox', { name: 'CURP' }).click();
-//     await sharedPage.getByRole('textbox', { name: 'CURP' }).fill('ROMA821011MDFJGL01');
-//     await sharedPage.getByRole('textbox', { name: 'RFC' }).click();
-//     await sharedPage.getByRole('textbox', { name: 'RFC' }).fill('ROMA821011M05');
-//     await sharedPage.getByRole('textbox', { name: 'TELEFONO' }).click();
-//     await sharedPage.getByRole('textbox', { name: 'TELEFONO' }).fill('5570766835');
-//     await sharedPage.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).click();
-//     await sharedPage.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).fill('lightit.desarrollo2@gmail.com');
-//   });
+    await sharedPage.getByRole('textbox', { name: 'NOMBRE' }).click();
+    await sharedPage.getByRole('textbox', { name: 'NOMBRE' }).fill('Alda Jocelyn');
+    await sharedPage.getByRole('textbox', { name: 'APELLIDO PATERNO' }).click();
+    await sharedPage.getByRole('textbox', { name: 'APELLIDO PATERNO' }).fill('Rojo');
+    await sharedPage.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).click();
+    await sharedPage.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).fill('Yo');
+    await sharedPage.getByRole('textbox', { name: 'CURP' }).click();
+    await sharedPage.getByRole('textbox', { name: 'CURP' }).fill('ROMA821011MDFJGL01');
+    await sharedPage.getByRole('textbox', { name: 'RFC' }).click();
+    await sharedPage.getByRole('textbox', { name: 'RFC' }).fill('ROMA821011M05');
+    await sharedPage.getByRole('textbox', { name: 'TELEFONO' }).click();
+    await sharedPage.getByRole('textbox', { name: 'TELEFONO' }).fill('5570766835');
+    await sharedPage.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).click();
+    await sharedPage.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).fill('lightit.desarrollo2@gmail.com');
+  });
 });
 
 
