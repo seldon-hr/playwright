@@ -24,7 +24,7 @@ test.describe.serial('Flujo completo de cotización de autos', () => {
 
   test('Cotización', async () => {
     /* Aumentar el tiempo */
-      test.setTimeout(100000); //Valor default 30000
+      test.setTimeout(120000); //Valor default 30000
       
     /* Cotización */
     await sharedPage.getByRole('textbox', { name: 'PARENTESCO' }).click();
@@ -59,10 +59,12 @@ test.describe.serial('Flujo completo de cotización de autos', () => {
     // Formas de Pago    
     /* await sharedPage.getByRole('combobox').filter({ hasText: 'FORMA DE PAGO' }).locator('i').nth(1).click();
     await sharedPage.getByText('Pago Referenciado').click(); */
-    await sharedPage.getByRole('textbox', { name: 'FORMA DE PAGO' }).click();
-    await sharedPage.getByText('Pago Referenciado', { exact: true }).click();
-    await sharedPage.getByRole('textbox', { name: 'PAQUETE DESEADO' }).click();
-    await sharedPage.getByText('amplia DM 5').click();
+    await sharedPage.getByRole('combobox').filter({ hasText: 'FORMA DE PAGO' }).locator('i').nth(1).click();
+    await sharedPage.getByRole('option', { name: 'Por Nomina' }).locator('div').first().click();
+    await sharedPage.getByRole('combobox').filter({ hasText: 'PLAZO DE PAGO' }).locator('i').nth(1).click();
+    await sharedPage.getByRole('option', { name: 'Mensual' }).locator('div').first().click();
+    await sharedPage.getByRole('combobox').filter({ hasText: 'PAQUETE DESEADO' }).locator('i').nth(1).click();
+    await sharedPage.getByText('amplia', { exact: true }).click();
     await sharedPage.getByRole('button', { name: 'Cotizar' }).click();
     
     // Esperar a que se procese la cotización
@@ -74,24 +76,51 @@ test.describe.serial('Flujo completo de cotización de autos', () => {
 
   test('Datos Asegurado Autos', async () => {
     test.setTimeout(80000);
-    /* Subir un poco */
-    await sharedPage.mouse.wheel(0, -800);
+    /* Up Scroll*/
+    await sharedPage.mouse.wheel(0, -1200);
 
-    await sharedPage.getByRole('textbox', { name: 'NOMBRE' }).click();
-    await sharedPage.getByRole('textbox', { name: 'NOMBRE' }).fill('Alda Jocelyn');
-    await sharedPage.getByRole('textbox', { name: 'APELLIDO PATERNO' }).click();
-    await sharedPage.getByRole('textbox', { name: 'APELLIDO PATERNO' }).fill('Rojo');
-    await sharedPage.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).click();
-    await sharedPage.getByRole('textbox', { name: 'CONDUCTOR HABITUAL' }).fill('Yo');
-    await sharedPage.getByRole('textbox', { name: 'CURP' }).click();
+    await sharedPage.getByRole('textbox', { name: 'NOMBRE', exact: true }).click();
+    await sharedPage.getByRole('textbox', { name: 'NOMBRE', exact: true }).fill('Alda Jocelyn');
+    await sharedPage.getByRole('textbox', { name: 'NOMBRE', exact: true }).press('Tab');
+    await sharedPage.getByRole('textbox', { name: 'APELLIDO PATERNO', exact: true }).fill('Rojo');
+    await sharedPage.getByRole('textbox', { name: 'APELLIDO PATERNO', exact: true }).press('Tab');
+    await sharedPage.getByRole('textbox', { name: 'APELLIDO MATERNO', exact: true }).fill('Magaña');
+    await sharedPage.getByRole('textbox', { name: 'APELLIDO MATERNO', exact: true }).press('Tab');
+    await sharedPage.getByRole('textbox', { name: 'CONDUCTOR HABITUAL (Y/O)' }).fill('Yo');
+    await sharedPage.getByRole('textbox', { name: 'CONDUCTOR HABITUAL (Y/O)' }).press('Tab');
     await sharedPage.getByRole('textbox', { name: 'CURP' }).fill('ROMA821011MDFJGL01');
-    await sharedPage.getByRole('textbox', { name: 'RFC' }).click();
-    await sharedPage.getByRole('textbox', { name: 'RFC' }).fill('ROMA821011M05');
-    await sharedPage.getByRole('textbox', { name: 'TELEFONO' }).click();
-    await sharedPage.getByRole('textbox', { name: 'TELEFONO' }).fill('5570766835');
-    await sharedPage.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).click();
+    await sharedPage.getByRole('textbox', { name: 'CURP' }).press('Tab');
+    await sharedPage.getByRole('textbox', { name: 'RFC' }).fill('ROMA821011M03');
+    await sharedPage.getByRole('textbox', { name: 'RFC' }).press('Tab');
+    await sharedPage.getByRole('textbox', { name: 'TELEFONO', exact: true }).fill('5570766835');
+    await sharedPage.getByRole('textbox', { name: 'TELEFONO', exact: true }).press('Tab');
     await sharedPage.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).fill('lightit.desarrollo2@gmail.com');
+    await sharedPage.getByRole('textbox', { name: 'CORREO ELECTRÓNICO' }).press('Tab');
+    await sharedPage.getByRole('switch', { name: 'EL ASEGURADO SU CÓNYUGE O ALG' }).press('Tab');
+    await sharedPage.getByRole('textbox', { name: 'NOMBRE DEL FUNCIONARIO' }).fill('Alda Jocelyn');
+    await sharedPage.getByRole('textbox', { name: 'NOMBRE DEL FUNCIONARIO' }).press('Tab');
+    await sharedPage.getByRole('textbox', { name: 'APELLIDO PATERNO DEL' }).fill('Rojo');
+    await sharedPage.getByRole('textbox', { name: 'APELLIDO PATERNO DEL' }).press('Tab');
+    await sharedPage.getByRole('textbox', { name: 'APELLIDO MATERNO DEL' }).fill('Magaña');
+
+    await sharedPage.getByRole('combobox').filter({ hasText: 'GENERO' }).locator('i').nth(1).click();
+    await sharedPage.getByRole('option', { name: 'MUJER' }).locator('div').first().click();
+    await sharedPage.getByRole('textbox', { name: 'PLACAS', exact: true }).click();
+    await sharedPage.getByRole('textbox', { name: 'PLACAS', exact: true }).fill('352422A4FQ');
+    await sharedPage.getByRole('textbox', { name: 'NO. SERIE (NIV)', exact: true }).click();
+    await sharedPage.getByRole('textbox', { name: 'NO. SERIE (NIV)', exact: true }).fill('42739423948327492');
+    await sharedPage.getByRole('textbox', { name: 'REPUVE (NCI)', exact: true }).click();
+    await sharedPage.getByRole('textbox', { name: 'REPUVE (NCI)', exact: true }).fill('42739423948327492');
+    await sharedPage.getByRole('textbox', { name: 'NO. MOTOR', exact: true }).click();
+    await sharedPage.getByRole('textbox', { name: 'NO. MOTOR', exact: true }).fill('2');
+ 
+    await sharedPage.mouse.wheel(0, 200); 
+    await sharedPage.getByRole('button', { name: 'Continuar' }).click();
+
   });
+
+  
+
 });
 
 
