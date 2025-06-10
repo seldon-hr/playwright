@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test';
 
+let min = 10000000000000000;
+let max = 99999999999999999;
+function getRandomIntInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 test.describe.serial('Flujo completo de cotización de autos', () => {
   let sharedPage;
 
@@ -109,9 +115,9 @@ test.describe.serial('Flujo completo de cotización de autos', () => {
     await sharedPage.getByRole('textbox', { name: 'PLACAS', exact: true }).fill('352422A4FQ');
     await sharedPage.getByRole('textbox', { name: 'NO. SERIE (NIV)', exact: true }).click();
     // Generar número de serie Aleatorio de 17 digitos.
-    await sharedPage.getByRole('textbox', { name: 'NO. SERIE (NIV)', exact: true }).fill('42739423948327492');
+    await sharedPage.getByRole('textbox', { name: 'NO. SERIE (NIV)', exact: true }).fill(String(getRandomIntInRange(min, max)));
     await sharedPage.getByRole('textbox', { name: 'REPUVE (NCI)', exact: true }).click();
-    await sharedPage.getByRole('textbox', { name: 'REPUVE (NCI)', exact: true }).fill('42739423948327492');
+    await sharedPage.getByRole('textbox', { name: 'REPUVE (NCI)', exact: true }).fill(String(getRandomIntInRange(min, max)));
     await sharedPage.getByRole('textbox', { name: 'NO. MOTOR', exact: true }).click();
     await sharedPage.getByRole('textbox', { name: 'NO. MOTOR', exact: true }).fill('2');
  
@@ -121,10 +127,11 @@ test.describe.serial('Flujo completo de cotización de autos', () => {
   });
 
   test('Resumen y Emisón', async() => {
-    test.setTimeout(20000);
+    test.setTimeout(50000);
     await sharedPage.getByRole('button', { name: 'EMITIR' }).click();
     //Finalizao Póliza
     await sharedPage.waitForTimeout(10000);
+    
   });
 
 });
